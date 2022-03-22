@@ -1,8 +1,5 @@
-image: gitpod/workspace-dotnet:latest
-
-ports:
-- port: 5000
-- port: 5001
+image:
+  file: .gitpod.Dockerfile
 
 tasks:
   - name: Restore & Build
