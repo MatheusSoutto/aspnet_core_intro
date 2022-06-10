@@ -1,16 +1,22 @@
 image: gitpod/workspace-dotnet:latest
 
-ports:
-- port: 5000
-- port: 5001
-
 tasks:
   - name: Restore & Build
     init: |
+      cd ./ContosoCrafts
       dotnet dev-certs https
       dotnet restore
       dotnet build
       echo 'TODO: build project'
+
+  - name: Run
+    command: |
+      cd ./ContosoCrafts
+      dotnet run
+
+ports:
+- port: 5000
+- port: 5001
 
 vscode:
   extensions:
