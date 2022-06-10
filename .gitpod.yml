@@ -13,6 +13,8 @@ tasks:
   - name: Run
     command: |
       cd ./ContosoCrafts
+      gp env -e ASPNETCORE_URLS=http://+:5000
+      gp env -e ASPNETCORE_HTTPS_URLS=https://+:5001
       dotnet run
 
 ports:
