@@ -1,7 +1,7 @@
-namespace ContosoCrafts.Models;
-
 using System.Text.Json;
 using System.Text.Json.Serialization;
+
+namespace ContosoCrafts.Models;
 
 public class Product
 {
