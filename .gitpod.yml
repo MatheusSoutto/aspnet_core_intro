@@ -5,7 +5,6 @@ tasks:
   - name: Restore & Build
     init: |
       cd ./ContosoCrafts
-      dotnet dev-certs https
       dotnet restore
       dotnet build
 
