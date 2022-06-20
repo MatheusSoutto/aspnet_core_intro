@@ -21,4 +21,15 @@ public class ProductsController : ControllerBase
         
         return this.Service.GetProducts();
     }
+
+    [Route("rate")]
+    [HttpPatch]
+    public IActionResult AddRating(
+        [FromQuery] string productId, 
+        [FromQuery] int rating
+    )
+    {
+        Service.AddRating(productId, rating);
+        return Ok();
+    }
 }
