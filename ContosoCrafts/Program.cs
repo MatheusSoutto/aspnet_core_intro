@@ -8,8 +8,6 @@ builder.Services.AddRazorPages();
 builder.Services.AddControllers();
 builder.Services.AddTransient<JsonFileProductService>();
 
-builder.WebHost.UseUrls("http://localhost:5000");
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,7 +18,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
