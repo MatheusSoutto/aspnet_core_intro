@@ -1,10 +1,10 @@
-using ContosoCrafts.Models;
 using ContosoCrafts.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor();
 builder.Services.AddControllers();
 builder.Services.AddTransient<JsonFileProductService>();
 
@@ -18,7 +18,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -28,6 +28,7 @@ app.UseAuthorization();
 app.UseEndpoints((endpoint) =>
 {
     endpoint.MapRazorPages();
+    endpoint.MapBlazorHub();
     endpoint.MapControllers();
 });
 
