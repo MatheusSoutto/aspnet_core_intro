@@ -1,5 +1,13 @@
 @using ContosoCrafts.Services
 @using ContosoCrafts.Models
+<!-- The usings below are needed for blazor events to be triggered -->
+@using System.Net.Http
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.JSInterop
 @inject JsonFileProductService ProductService
 
 <div class="card-columns">
@@ -25,6 +33,33 @@
     }
 </div>
 
+@if (selectedProduct != null) 
+{
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productTitle">@selectedProduct.Title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('@selectedProduct.Image');">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">@selectedProduct.Description</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
 @code {
     Product selectedProduct;
     string selectedProductId;
@@ -33,5 +68,7 @@
     {
         selectedProductId = productId;
         selectedProduct = ProductService.GetProducts().First(x => x.Id == productId);
+        Console.WriteLine($"Selected product id: {selectedProductId}");
+        Console.WriteLine($"Selected product title: {selectedProduct.Title}");
     }
 }
